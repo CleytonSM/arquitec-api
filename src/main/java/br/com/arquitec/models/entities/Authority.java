@@ -26,7 +26,7 @@ public class Authority {
     @Column(name = "id_auth")
     private Integer id;
 
-    @Column(name = "nm_auth")
+    @Column(name = "name_auth")
     @Enumerated(EnumType.STRING)
     private Role role;
 }
