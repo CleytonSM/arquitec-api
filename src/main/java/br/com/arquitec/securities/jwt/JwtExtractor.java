@@ -14,6 +14,7 @@ public class JwtExtractor {
     private SecretKeyHelper secretKeyHelper;
 
     public String extractUserEmail(String token) {
+        token = stripBearer(token);
         SecretKey secretKey = secretKeyHelper.secretKeyBuilder();
 
         return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token)
@@ -42,12 +43,20 @@ public class JwtExtractor {
                 .getPayload().get("authority", String.class);
     }
 
-    public Integer extractUserId(String token) {
+    public String extractUserId(String token) {
+        token = stripBearer(token);
+
         SecretKey secretKey = secretKeyHelper.secretKeyBuilder();
 
-        return Jwts.parser().verifyWith(secretKey).build()
-                .parseSignedClaims(token)
-                .getPayload()
-                .get("userId", Integer.class);
+        return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token)
+                .getPayload().get("userId", String.class);
+    }
+
+    private String stripBearer(String token) {
+        if(token.contains("Bearer ")) {
+            return token.substring(7);
+        }
+
+        return token;
     }
 }

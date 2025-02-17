@@ -37,7 +37,7 @@ public class JwtValidatorFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         } catch (Exception ex) {
-            response.sendError(401);
+            response.sendError(500);
             return;
         }
 
