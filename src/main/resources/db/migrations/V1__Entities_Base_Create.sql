@@ -1,10 +1,10 @@
 CREATE TABLE `tb_authorities` (
-  `id_auth` INTEGER PRIMARY KEY,
+  `id_auth` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `name_auth` VARCHAR(40)
 );
 
 CREATE TABLE `tb_user` (
-  `id_user` INTEGER PRIMARY KEY,
+  `id_user` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_auth` INTEGER,
   `name_user` VARCHAR(100),
   `lastname_user` VARCHAR(100),
@@ -18,7 +18,7 @@ CREATE TABLE `tb_user` (
 );
 
 CREATE TABLE `tb_customer` (
-  `id_customer` INTEGER PRIMARY KEY,
+  `id_customer` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_user` INTEGER NOT NULL,
   `nickname_customer` VARCHAR(100),
   `birthday_customer` DATETIME NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE `tb_customer` (
 );
 
 CREATE TABLE `tb_form` (
-  `id_form` INTEGER PRIMARY KEY,
+  `id_form` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_customer` INTEGER NOT NULL,
   `is_finished_form` BOOLEAN,
   `title_form` VARCHAR(40),
@@ -42,7 +42,7 @@ CREATE TABLE `tb_form` (
 );
 
 CREATE TABLE `tb_social_media` (
-  `id_social_media` INTEGER PRIMARY KEY,
+  `id_social_media` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_customer` INTEGER NOT NULL,
   `name_social_media` VARCHAR(60),
   `is_filled` BOOLEAN,
@@ -52,7 +52,7 @@ CREATE TABLE `tb_social_media` (
 );
 
 CREATE TABLE `tb_descendants` (
-  `id_descendant` INTEGER PRIMARY KEY,
+  `id_descendant` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_customer` INTEGER NOT NULL,
   `name_descendant` VARCHAR(60),
   `age_descendant` INTEGER,
@@ -63,7 +63,7 @@ CREATE TABLE `tb_descendants` (
 );
 
 CREATE TABLE `tb_description` (
-  `id_desc` INTEGER PRIMARY KEY,
+  `id_desc` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_form` INTEGER NOT NULL,
   `best_place_desc` VARCHAR(180),
   `wknd_best_place_desc` VARCHAR(180),
@@ -96,7 +96,7 @@ CREATE TABLE `tb_description` (
 );
 
 CREATE TABLE `tb_experience` (
-  `id_experience` INTEGER PRIMARY KEY,
+  `id_experience` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_form` INTEGER NOT NULL,
   `neutral_color_exp` VARCHAR(20),
   `lively_color_exp` VARCHAR(20),
@@ -109,7 +109,7 @@ CREATE TABLE `tb_experience` (
 );
 
 CREATE TABLE `tb_building` (
-  `id_building` INTEGER PRIMARY KEY,
+  `id_building` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_form` INTEGER NOT NULL,
   `neighborhood_relationship_building` VARCHAR(180),
   `determining_factor_building` VARCHAR(180),
@@ -123,7 +123,7 @@ CREATE TABLE `tb_building` (
 );
 
 CREATE TABLE `tb_entrance_hall` (
-  `id_entrance_hall` INTEGER PRIMARY KEY,
+  `id_entrance_hall` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_form` INTEGER NOT NULL,
   `bool_shoes_house_walking_entrance_hall` BOOLEAN,
   `bool_has_entrance_console_table_entrance_hall` BOOLEAN,
@@ -137,7 +137,7 @@ CREATE TABLE `tb_entrance_hall` (
 );
 
 CREATE TABLE `tb_dining_room` (
-  `id_dining_room` INTEGER PRIMARY KEY,
+  `id_dining_room` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_form` INTEGER NOT NULL,
   `dining_table_capacity_dining_room` INTEGER,
   `daily_meals_location_dining_room` VARCHAR(60),
@@ -148,7 +148,7 @@ CREATE TABLE `tb_dining_room` (
 );
 
 CREATE TABLE `tb_kitchen` (
-  `id_kitchen` INTEGER PRIMARY KEY,
+  `id_kitchen` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_form` INTEGER NOT NULL,
   `color_type_kitchen` VARCHAR(30),
   `shape_type_kitchen` VARCHAR(30),
@@ -173,7 +173,7 @@ CREATE TABLE `tb_kitchen` (
 );
 
 CREATE TABLE `tb_toilet` (
-  `id_toilet` INTEGER PRIMARY KEY,
+  `id_toilet` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_form` INTEGER NOT NULL,
   `apartment_pattern_toilet` VARCHAR(180),
   `design_toilet` VARCHAR(50),
@@ -184,7 +184,7 @@ CREATE TABLE `tb_toilet` (
 );
 
 CREATE TABLE `tb_living_room` (
-  `id_living_room` INTEGER PRIMARY KEY,
+  `id_living_room` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_form` INTEGER NOT NULL,
   `people_in_living_room` INTEGER,
   `bool_tv_is_important_living_room` BOOLEAN,
@@ -202,7 +202,7 @@ CREATE TABLE `tb_living_room` (
 );
 
 CREATE TABLE `tb_laundry` (
-  `id_laundry` INTEGER PRIMARY KEY,
+  `id_laundry` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_form` INTEGER NOT NULL,
   `bool_built_in_sink_laundry` BOOLEAN,
   `bool_porcelain_sink_laundry` BOOLEAN,
@@ -217,7 +217,7 @@ CREATE TABLE `tb_laundry` (
 );
 
 CREATE TABLE `tb_bathroom` (
-  `id_bathroom` INTEGER PRIMARY KEY,
+  `id_bathroom` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_form` INTEGER NOT NULL,
   `bool_all_renovated_bathroom` BOOLEAN,
   `preferred_sink_shape_bathroom` VARCHAR(50),
@@ -245,7 +245,7 @@ CREATE TABLE `tb_bathroom` (
 );
 
 CREATE TABLE `tb_reuse_appliances_in_kitchen` (
-  `id_reuse_appliances_in_kitchen` INTEGER PRIMARY KEY,
+  `id_reuse_appliances_in_kitchen` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_kitchen` INTEGER,
   `name_reuse_appliances_in_kitchen` VARCHAR(30),
   `is_filled` BOOLEAN,
@@ -255,7 +255,7 @@ CREATE TABLE `tb_reuse_appliances_in_kitchen` (
 );
 
 CREATE TABLE `tb_new_appliances_in_kitchen` (
-  `id_new_appliances_in_kitchen` INTEGER PRIMARY KEY,
+  `id_new_appliances_in_kitchen` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_kitchen` INTEGER,
   `link_new_appliances_in_kitchen` TEXT,
   `is_filled` BOOLEAN,
@@ -265,7 +265,7 @@ CREATE TABLE `tb_new_appliances_in_kitchen` (
 );
 
 CREATE TABLE `tb_necessary_appliances_in_kitchen` (
-  `id_necessary_appliances_in_kitchen` INTEGER PRIMARY KEY,
+  `id_necessary_appliances_in_kitchen` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `id_kitchen` INTEGER,
   `bool_store_small_visible_appliances` BOOLEAN,
   `bool_store_small_hidden_appliances` BOOLEAN,
@@ -433,3 +433,9 @@ ALTER TABLE `tb_new_appliances_in_kitchen` ADD FOREIGN KEY (`id_kitchen`) REFERE
 ALTER TABLE `tb_reuse_appliances_in_kitchen` ADD FOREIGN KEY (`id_kitchen`) REFERENCES `tb_kitchen` (`id_kitchen`);
 
 ALTER TABLE `tb_necessary_appliances_in_kitchen` ADD FOREIGN KEY (`id_kitchen`) REFERENCES `tb_kitchen` (`id_kitchen`);
+
+INSERT INTO tb_authorities (id_auth, name_auth)
+VALUES (1, 'ROLE_CUSTOMER');
+
+INSERT INTO tb_authorities (id_auth, name_auth)
+VALUES (2, 'ROLE_ADMIN');
