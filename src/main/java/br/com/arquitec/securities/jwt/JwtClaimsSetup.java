@@ -1,6 +1,5 @@
 package br.com.arquitec.securities.jwt;
 
-import br.com.arquitec.helpers.ClaimsHelper;
 import br.com.arquitec.models.entities.User;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +21,8 @@ public class JwtClaimsSetup {
 
     private Map<String, String> buildClaims(User user) {
         Map<String, String> claims = new HashMap<>();
-        claims.put("email", ClaimsHelper.collectEmail(user));
+        claims.put("email", user.getEmail());
+        claims.put("userId", user.getId().toString());
 
         return claims;
     }

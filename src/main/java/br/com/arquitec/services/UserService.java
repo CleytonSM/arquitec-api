@@ -42,6 +42,7 @@ public class UserService {
         User user = getById(extractIdFromRequest(request));
         if(!user.getEmail().equals(userUpdate.getEmail())) {
             NewUserValidator.validateIfAlreadyExists(repository.findByEmail(userUpdate.getEmail()).isPresent());
+            user.setActive(Boolean.FALSE);
         }
 
         user = userMapper.mapUserUpdateDTOToUser(user, userUpdate);
@@ -70,6 +71,7 @@ public class UserService {
     }
 
     private Integer extractIdFromRequest(HttpServletRequest request) {
-        return jwtExtractor.extractUserId(request.getHeader("Authorization"));
+        System.out.println(jwtExtractor.extractUserId(request.getHeader("Authorization")));
+        return Integer.parseInt(jwtExtractor.extractUserId(request.getHeader("Authorization")));
     }
 }

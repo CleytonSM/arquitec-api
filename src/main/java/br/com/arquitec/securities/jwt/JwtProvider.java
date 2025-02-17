@@ -30,7 +30,7 @@ public class JwtProvider {
         configureTokenValidity(tokenType);
 
         return Jwts.builder()
-                .issuer("X8 Tecnologia")
+                .issuer("Arquinina")
                 .claims(jwtClaimsSetup.claimsSetup(user))
                 .subject("JWT Token")
                 .issuedAt(date)
