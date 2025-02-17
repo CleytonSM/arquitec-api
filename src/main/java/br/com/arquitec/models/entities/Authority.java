@@ -20,12 +20,13 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "tb_authorities")
-public class Authorities {
+public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_auth")
     private Integer id;
-    @Column(name = "nm_auth")
+
+    @Column(name = "name_auth")
     @Enumerated(EnumType.STRING)
     private Role role;
 }
